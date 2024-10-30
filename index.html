@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación con Partículas</title>
+    <title>Presentación con fondo de partículas</title>
     <style>
+        /* Estilos base para eliminar márgenes y configurar fuentes */
         * {
             margin: 0;
             padding: 0;
@@ -12,25 +13,28 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Configuración del cuerpo del documento */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #000;
+            background-color: #000; /* Fondo negro */
             overflow: hidden;
         }
 
+        /* Contenedor del fondo de partículas */
         #particles-js {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            z-index: -1;
-            background-color: #000;
+            z-index: -1; /* Colocar el fondo detrás del contenido principal */
+            background-color: #000; /* Fondo negro */
         }
 
+        /* Contenedor principal de la presentación */
         .container {
             position: relative;
             width: 100%;
@@ -39,42 +43,47 @@
             max-height: 600px;
             overflow: hidden;
             border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
+            background-color: #FFFFFF;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Sombra para efecto de profundidad */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque */
         }
 
+        /* Configuración de las láminas individuales */
         .slide {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
-            left: 100%;
+            left: 100%; /* Oculta la lámina fuera de vista inicialmente */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: #fff;
-            transition: left 0.5s ease-in-out;
+            transition: left 0.5s ease-in-out; /* Transición suave */
         }
 
+        /* Clase para la lámina activa */
         .slide.active {
-            left: 0;
+            left: 0; /* Hace visible la lámina activa */
         }
 
+        /* Estilo de los encabezados */
         .slide h1 {
             font-size: 2em;
             margin-bottom: 20px;
             color: #000000;
         }
 
+        /* Estilo de los párrafos */
         .slide p {
             font-size: 1.2em;
             color: #000000;
             padding: 0 20px;
         }
 
+        /* Contenedor de los botones de navegación */
         .navigation {
             position: absolute;
             bottom: 20px;
@@ -83,6 +92,7 @@
             gap: 10px;
         }
 
+        /* Estilo de los botones */
         .nav-btn {
             padding: 10px 20px;
             background-color: #007BFF;
@@ -94,11 +104,12 @@
             transition: background-color 0.3s;
         }
 
+        /* Cambio de color de botón en hover */
         .nav-btn:hover {
             background-color: #0056b3;
         }
 
-        /* Media query para pantallas pequeñas */
+        /* Media query para adaptar el contenedor a pantallas pequeñas */
         @media (max-width: 768px) {
             .container {
                 max-width: 100%;
@@ -121,8 +132,10 @@
     </style>
 </head>
 <body>
+    <!-- Contenedor de partículas de fondo -->
     <div id="particles-js"></div>
 
+    <!-- Contenedor principal para las láminas de la presentación -->
     <div class="container">
         <div id="slide-1" class="slide active">
             <h1>Lámina 1</h1>
@@ -146,13 +159,17 @@
         </div>
     </div>
 
+    <!-- Botones de navegación para avanzar y retroceder láminas -->
     <div class="navigation">
         <button class="nav-btn" onclick="previousSlide()">Anterior</button>
         <button class="nav-btn" onclick="nextSlide()">Siguiente</button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Script de particles.js para crear el fondo animado -->
+    <!--script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script-->
+    <script src="particles.min.js"></script>
     <script>
+        // Configuración de particles.js para el fondo de partículas animadas
         particlesJS("particles-js", {
             "particles": {
                 "number": {
@@ -166,34 +183,14 @@
                     "value": "#ffffff"
                 },
                 "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
+                    "type": "circle"
                 },
                 "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
+                    "value": 0.5
                 },
                 "size": {
                     "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
+                    "random": true
                 },
                 "line_linked": {
                     "enable": true,
@@ -204,21 +201,10 @@
                 },
                 "move": {
                     "enable": true,
-                    "speed": 3,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
+                    "speed": 3
                 }
             },
             "interactivity": {
-                "detect_on": "canvas",
                 "events": {
                     "onhover": {
                         "enable": true,
@@ -227,41 +213,17 @@
                     "onclick": {
                         "enable": true,
                         "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 400,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
                     }
                 }
             },
             "retina_detect": true
         });
 
+        // Variables para controlar la lámina actual y el total de láminas
         let currentSlide = 1;
         const totalSlides = 5;
 
+        // Muestra la lámina especificada y oculta las demás
         function showSlide(slideNumber) {
             document.querySelectorAll('.slide').forEach(slide => {
                 slide.classList.remove('active');
@@ -269,22 +231,25 @@
             document.querySelector(`#slide-${slideNumber}`).classList.add('active');
         }
 
+        // Avanza a la siguiente lámina
         function nextSlide() {
             currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
             showSlide(currentSlide);
         }
 
+        // Retrocede a la lámina anterior
         function previousSlide() {
             currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
             showSlide(currentSlide);
         }
 
+        // Controla las teclas de navegación del teclado
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'Enter') {
-                nextSlide();
+                nextSlide(); // Flecha derecha, espacio y Enter avanzan a la siguiente lámina
                 event.preventDefault();
             } else if (event.key === 'ArrowLeft') {
-                previousSlide();
+                previousSlide(); // Flecha izquierda retrocede a la lámina anterior
             }
         });
     </script>
