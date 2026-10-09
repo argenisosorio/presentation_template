@@ -31,7 +31,7 @@
             top: 0;
             left: 0;
             z-index: -1; /* Colocar el fondo detrás del contenido principal */
-            background-color: #FFFFFF; /* Fondo blanco *//
+            background-color: #FFFFFF; /* Fondo blanco */
         }
 
         /* Contenedor principal de la presentación */
@@ -85,44 +85,45 @@
             visibility: visible;
         }
 
+        /* Duración de animaciones cambiada de 0.5s a 1.5s */
         .slide.transition-slide-in {
-            animation: slide-in 0.5s ease-in-out both;
+            animation: slide-in 1.5s ease-in-out both;
         }
 
         .slide.transition-slide-out {
-            animation: slide-out 0.5s ease-in-out both;
+            animation: slide-out 1.5s ease-in-out both;
         }
 
         .slide.transition-fade-in {
-            animation: fade-in 0.5s ease-in-out both;
+            animation: fade-in 1.5s ease-in-out both;
         }
 
         .slide.transition-fade-out {
-            animation: fade-out 0.5s ease-in-out both;
+            animation: fade-out 1.5s ease-in-out both;
         }
 
         .slide.transition-zoom-in {
-            animation: zoom-in 0.5s ease-in-out both;
+            animation: zoom-in 1.5s ease-in-out both;
         }
 
         .slide.transition-zoom-out {
-            animation: zoom-out 0.5s ease-in-out both;
+            animation: zoom-out 1.5s ease-in-out both;
         }
 
         .slide.transition-vertical-in {
-            animation: vertical-in 0.5s ease-in-out both;
+            animation: vertical-in 1.5s ease-in-out both;
         }
 
         .slide.transition-vertical-out {
-            animation: vertical-out 0.5s ease-in-out both;
+            animation: vertical-out 1.5s ease-in-out both;
         }
 
         .slide.transition-rotate-in {
-            animation: rotate-in 0.5s ease-in-out both;
+            animation: rotate-in 1.5s ease-in-out both;
         }
 
         .slide.transition-rotate-out {
-            animation: rotate-out 0.5s ease-in-out both;
+            animation: rotate-out 1.5s ease-in-out both;
         }
 
         @keyframes slide-in {
@@ -257,14 +258,7 @@
         </div>
     </div>
 
-    <!-- Botones de navegación para avanzar y retroceder láminas -->
-    <!--div class="navigation">
-        <button class="nav-btn" onclick="previousSlide()">Anterior</button>
-        <button class="nav-btn" onclick="nextSlide()">Siguiente</button>
-    </ div-->
-
     <!-- Script de particles.js para crear el fondo animado -->
-    <!--script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script-->
     <script src="particles.min.js"></script>
     <script>
         // Configuración de particles.js para el fondo de partículas animadas
@@ -348,11 +342,11 @@
             previousEffect = effect;
 
             // Limpia las clases de transición después de que la animación haya
-            // terminado en un tiempo de 3.5 segundos (3500 ms)
+            // terminado en un tiempo de 1.5 segundos (1500 ms)
             transitionTimeout = setTimeout(() => {
                 outgoingSlide.classList.remove('transition-out', `transition-${effect}-out`);
                 incomingSlide.classList.remove('transition-in', `transition-${effect}-in`);
-            }, 500);
+            }, 1500);
         }
 
         // Avanza a la siguiente lámina
