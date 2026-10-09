@@ -54,14 +54,14 @@
             width: 100%;
             height: 100%;
             top: 0;
-            left: 100%;
+            left: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: #fff;
-            transition: left 0.5s ease-in-out;
+            visibility: hidden;
         }
 
         /* Regla para adaptar la imagen de 1200x676px al contenedor */
@@ -73,7 +73,106 @@
 
         /* Clase para la lámina activa */
         .slide.active {
-            left: 0; /* Hace visible la lámina activa */
+            visibility: visible;
+        }
+
+        .slide.transition-in {
+            z-index: 2;
+        }
+
+        .slide.transition-out {
+            z-index: 1;
+            visibility: visible;
+        }
+
+        .slide.transition-slide-in {
+            animation: slide-in 0.5s ease-in-out both;
+        }
+
+        .slide.transition-slide-out {
+            animation: slide-out 0.5s ease-in-out both;
+        }
+
+        .slide.transition-fade-in {
+            animation: fade-in 0.5s ease-in-out both;
+        }
+
+        .slide.transition-fade-out {
+            animation: fade-out 0.5s ease-in-out both;
+        }
+
+        .slide.transition-zoom-in {
+            animation: zoom-in 0.5s ease-in-out both;
+        }
+
+        .slide.transition-zoom-out {
+            animation: zoom-out 0.5s ease-in-out both;
+        }
+
+        .slide.transition-vertical-in {
+            animation: vertical-in 0.5s ease-in-out both;
+        }
+
+        .slide.transition-vertical-out {
+            animation: vertical-out 0.5s ease-in-out both;
+        }
+
+        .slide.transition-rotate-in {
+            animation: rotate-in 0.5s ease-in-out both;
+        }
+
+        .slide.transition-rotate-out {
+            animation: rotate-out 0.5s ease-in-out both;
+        }
+
+        @keyframes slide-in {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes slide-out {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes zoom-in {
+            from { opacity: 0; transform: scale(0.7); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes zoom-out {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(1.3); }
+        }
+
+        @keyframes vertical-in {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes vertical-out {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100%); }
+        }
+
+        @keyframes rotate-in {
+            from { opacity: 0; transform: translateX(50%) rotate(12deg) scale(0.8); }
+            to { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
+        }
+
+        @keyframes rotate-out {
+            from { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
+            to { opacity: 0; transform: translateX(-50%) rotate(-12deg) scale(0.8); }
         }
 
         /* Estilo de los encabezados */
@@ -159,10 +258,10 @@
     </div>
 
     <!-- Botones de navegación para avanzar y retroceder láminas -->
-    <div class="navigation">
+    <!--div class="navigation">
         <button class="nav-btn" onclick="previousSlide()">Anterior</button>
         <button class="nav-btn" onclick="nextSlide()">Siguiente</button>
-    </div>
+    </ div-->
 
     <!-- Script de particles.js para crear el fondo animado -->
     <!--script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script-->
@@ -221,13 +320,39 @@
         // Variables para controlar la lámina actual y el total de láminas
         let currentSlide = 1;
         const totalSlides = 4;
+        const transitionEffects = ['slide', 'fade', 'zoom', 'vertical', 'rotate'];
+        let previousEffect = null;
+        let transitionTimeout;
 
         // Muestra la lámina especificada y oculta las demás
         function showSlide(slideNumber) {
-            document.querySelectorAll('.slide').forEach(slide => {
-                slide.classList.remove('active');
+            const slides = document.querySelectorAll('.slide');
+            const outgoingSlide = document.querySelector('.slide.active');
+            const incomingSlide = document.querySelector(`#slide-${slideNumber}`);
+            const effectOptions = transitionEffects.filter(effect => effect !== previousEffect);
+            const effect = effectOptions[Math.floor(Math.random() * effectOptions.length)];
+
+            clearTimeout(transitionTimeout);
+            slides.forEach(slide => {
+                slide.classList.remove(
+                    'transition-in',
+                    'transition-out',
+                    ...transitionEffects.map(name => `transition-${name}-in`),
+                    ...transitionEffects.map(name => `transition-${name}-out`)
+                );
             });
-            document.querySelector(`#slide-${slideNumber}`).classList.add('active');
+
+            outgoingSlide.classList.remove('active');
+            outgoingSlide.classList.add('transition-out', `transition-${effect}-out`);
+            incomingSlide.classList.add('active', 'transition-in', `transition-${effect}-in`);
+            previousEffect = effect;
+
+            // Limpia las clases de transición después de que la animación haya
+            // terminado en un tiempo de 3.5 segundos (3500 ms)
+            transitionTimeout = setTimeout(() => {
+                outgoingSlide.classList.remove('transition-out', `transition-${effect}-out`);
+                incomingSlide.classList.remove('transition-in', `transition-${effect}-in`);
+            }, 500);
         }
 
         // Avanza a la siguiente lámina
