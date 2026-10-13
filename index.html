@@ -64,7 +64,7 @@
             visibility: hidden;
         }
 
-        /* Regla para adaptar la imagen de 1200x676px al contenedor */
+        /* Regla para adaptar la imagen al contenedor */
         .slide img {
             width: 100%;
             height: 100%;
@@ -85,46 +85,17 @@
             visibility: visible;
         }
 
-        /* Duración de animaciones cambiada de 0.5s a 1.5s */
-        .slide.transition-slide-in {
-            animation: slide-in 1.5s ease-in-out both;
-        }
-
-        .slide.transition-slide-out {
-            animation: slide-out 1.5s ease-in-out both;
-        }
-
-        .slide.transition-fade-in {
-            animation: fade-in 1.5s ease-in-out both;
-        }
-
-        .slide.transition-fade-out {
-            animation: fade-out 1.5s ease-in-out both;
-        }
-
-        .slide.transition-zoom-in {
-            animation: zoom-in 1.5s ease-in-out both;
-        }
-
-        .slide.transition-zoom-out {
-            animation: zoom-out 1.5s ease-in-out both;
-        }
-
-        .slide.transition-vertical-in {
-            animation: vertical-in 1.5s ease-in-out both;
-        }
-
-        .slide.transition-vertical-out {
-            animation: vertical-out 1.5s ease-in-out both;
-        }
-
-        .slide.transition-rotate-in {
-            animation: rotate-in 1.5s ease-in-out both;
-        }
-
-        .slide.transition-rotate-out {
-            animation: rotate-out 1.5s ease-in-out both;
-        }
+        /* Duración de animaciones */
+        .slide.transition-slide-in { animation: slide-in 1.5s ease-in-out both; }
+        .slide.transition-slide-out { animation: slide-out 1.5s ease-in-out both; }
+        .slide.transition-fade-in { animation: fade-in 1.5s ease-in-out both; }
+        .slide.transition-fade-out { animation: fade-out 1.5s ease-in-out both; }
+        .slide.transition-zoom-in { animation: zoom-in 1.5s ease-in-out both; }
+        .slide.transition-zoom-out { animation: zoom-out 1.5s ease-in-out both; }
+        .slide.transition-vertical-in { animation: vertical-in 1.5s ease-in-out both; }
+        .slide.transition-vertical-out { animation: vertical-out 1.5s ease-in-out both; }
+        .slide.transition-rotate-in { animation: rotate-in 1.5s ease-in-out both; }
+        .slide.transition-rotate-out { animation: rotate-out 1.5s ease-in-out both; }
 
         @keyframes slide-in {
             from { transform: translateX(100%); }
@@ -176,65 +147,18 @@
             to { opacity: 0; transform: translateX(-50%) rotate(-12deg) scale(0.8); }
         }
 
-        /* Estilo de los encabezados */
-        .slide h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #000000;
-        }
+        /* Estilo de los encabezados y párrafos */
+        .slide h1 { font-size: 2em; margin-bottom: 20px; color: #000000; }
+        .slide p { font-size: 1.2em; color: #000000; padding: 0 20px; }
 
-        /* Estilo de los párrafos */
-        .slide p {
-            font-size: 1.2em;
-            color: #000000;
-            padding: 0 20px;
-        }
-
-        /* Contenedor de los botones de navegación */
-        .navigation {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        /* Estilo de los botones */
-        .nav-btn {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-        }
-
-        /* Cambio de color de botón en hover */
-        .nav-btn:hover {
-            background-color: #0056b3;
-        }
-
-        /* Media query para adaptar el contenedor a pantallas pequeñas */
+        /* Media query para pantallas pequeñas */
         @media (max-width: 768px) {
             .container {
                 max-width: 100%;
                 max-height: 80%;
             }
-            
-            .slide h1 {
-                font-size: 1.5em;
-            }
-            
-            .slide p {
-                font-size: 1em;
-            }
-            
-            .nav-btn {
-                padding: 8px 16px;
-                font-size: 0.9em;
-            }
+            .slide h1 { font-size: 1.5em; }
+            .slide p { font-size: 1em; }
         }
     </style>
 </head>
@@ -242,147 +166,93 @@
     <!-- Contenedor de partículas de fondo -->
     <div id="particles-js"></div>
 
-    <!-- Contenedor principal para las láminas de la presentación -->
-    <div class="container">
-        <div id="slide-1" class="slide active">
-            <img src="static/1.png" alt="">
-        </div>
-        <div id="slide-2" class="slide">
-            <img src="static/2.png" alt="">
-        </div>
-        <div id="slide-3" class="slide">
-            <img src="static/3.png" alt="">
-        </div>
-        <div id="slide-4" class="slide">
-            <img src="static/4.png" alt="">
-        </div>
-        <div id="slide-5" class="slide">
-            <img src="static/5.png" alt="">
-        </div>
-        <div id="slide-6" class="slide">
-            <img src="static/6.png" alt="">
-        </div>
-        <div id="slide-7" class="slide">
-            <img src="static/7.png" alt="">
-        </div>
-        <div id="slide-8" class="slide">
-            <img src="static/8.png" alt="">
-        </div>
-        <div id="slide-9" class="slide">
-            <img src="static/9.png" alt="">
-        </div>
-        <div id="slide-10" class="slide">
-            <img src="static/10.png" alt="">
-        </div>
-        <div id="slide-11" class="slide">
-            <img src="static/11.png" alt="">
-        </div>
-        <div id="slide-12" class="slide">
-            <img src="static/12.png" alt="">
-        </div>
-        <div id="slide-13" class="slide">
-            <img src="static/13.png" alt="">
-        </div>
-        <div id="slide-14" class="slide">
-            <img src="static/14.png" alt="">
-        </div>
-        <div id="slide-15" class="slide">
-            <img src="static/15.png" alt="">
-        </div>
-        <div id="slide-16" class="slide">
-            <img src="static/16.png" alt="">
-        </div>
-        <div id="slide-17" class="slide">
-            <img src="static/17.png" alt="">
-        </div>
-        <div id="slide-18" class="slide">
-            <img src="static/18.png" alt="">
-        </div>
-        <div id="slide-19" class="slide">
-            <img src="static/19.png" alt="">
-        </div>
-        <div id="slide-20" class="slide">
-            <img src="static/20.png" alt="">
-        </div>
-        <div id="slide-21" class="slide">
-            <img src="static/21.png" alt="">
-        </div>
-        <div id="slide-22" class="slide">
-            <img src="static/22.png" alt="">
-        </div>
-        <div id="slide-23" class="slide">
-            <img src="static/23.png" alt="">
-        </div>
-        <div id="slide-24" class="slide">
-            <img src="static/24.png" alt="">
-        </div>
+    <!-- Contenedor principal donde se inyectarán las láminas automáticamente -->
+    <div class="container" id="slides-container">
+        <!-- Se genera de forma dinámica mediante JavaScript -->
     </div>
 
-    <!-- Script de particles.js para crear el fondo animado -->
+    <!-- Script de particles.js -->
     <script src="particles.min.js"></script>
     <script>
-        // Configuración de particles.js para el fondo de partículas animadas
+        // Configuración de particles.js
         particlesJS("particles-js", {
             "particles": {
-                "number": {
-                    "value": 100,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#000000"
-                },
-                "shape": {
-                    "type": "circle"
-                },
-                "opacity": {
-                    "value": 0.5
-                },
-                "size": {
-                    "value": 3,
-                    "random": true
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#000000",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 3
-                }
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#000000" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#000000", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 3 }
             },
             "interactivity": {
                 "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    }
+                    "onhover": { "enable": true, "mode": "repulse" },
+                    "onclick": { "enable": true, "mode": "push" }
                 }
             },
             "retina_detect": true
         });
 
-        // Variables para controlar la lámina actual y el total de láminas
+        // Variables globales de control
         let currentSlide = 1;
-        const totalSlides = 24;
+        let totalSlides = 0;
         const transitionEffects = ['slide', 'fade', 'zoom', 'vertical', 'rotate'];
         let previousEffect = null;
         let transitionTimeout;
 
+        // Función para detectar cuántas imágenes existen en la carpeta static
+        async function detectSlides() {
+            const container = document.getElementById('slides-container');
+            let i = 1;
+
+            while (true) {
+                const imagePath = `static/${i}.png`;
+                const exists = await checkImageExists(imagePath);
+
+                if (!exists) {
+                    break; // Si la imagen no existe, detenemos la búsqueda
+                }
+
+                // Creamos el elemento div.slide y su imagen correspondiente
+                const slideDiv = document.createElement('div');
+                slideDiv.id = `slide-${i}`;
+                slideDiv.className = `slide ${i === 1 ? 'active' : ''}`;
+
+                const img = document.createElement('img');
+                img.src = imagePath;
+                img.alt = `Lámina ${i}`;
+
+                slideDiv.appendChild(img);
+                container.appendChild(slideDiv);
+
+                i++;
+            }
+
+            totalSlides = i - 1;
+            console.log(`Se detectaron ${totalSlides} láminas automáticamente.`);
+        }
+
+        // Utilidad para verificar si una imagen carga correctamente
+        function checkImageExists(url) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => resolve(true);
+                img.onerror = () => resolve(false);
+                img.src = url;
+            });
+        }
+
         // Muestra la lámina especificada y oculta las demás
         function showSlide(slideNumber) {
             const slides = document.querySelectorAll('.slide');
+            if (slides.length === 0) return;
+
             const outgoingSlide = document.querySelector('.slide.active');
             const incomingSlide = document.querySelector(`#slide-${slideNumber}`);
+
+            if (!outgoingSlide || !incomingSlide) return;
+
             const effectOptions = transitionEffects.filter(effect => effect !== previousEffect);
             const effect = effectOptions[Math.floor(Math.random() * effectOptions.length)];
 
@@ -401,8 +271,6 @@
             incomingSlide.classList.add('active', 'transition-in', `transition-${effect}-in`);
             previousEffect = effect;
 
-            // Limpia las clases de transición después de que la animación haya
-            // terminado en un tiempo de 1.5 segundos (1500 ms)
             transitionTimeout = setTimeout(() => {
                 outgoingSlide.classList.remove('transition-out', `transition-${effect}-out`);
                 incomingSlide.classList.remove('transition-in', `transition-${effect}-in`);
@@ -411,12 +279,14 @@
 
         // Avanza a la siguiente lámina
         function nextSlide() {
+            if (totalSlides === 0) return;
             currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
             showSlide(currentSlide);
         }
 
         // Retrocede a la lámina anterior
         function previousSlide() {
+            if (totalSlides === 0) return;
             currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
             showSlide(currentSlide);
         }
@@ -424,11 +294,16 @@
         // Controla las teclas de navegación del teclado
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'Enter') {
-                nextSlide(); // Flecha derecha, espacio y Enter avanzan a la siguiente lámina
+                nextSlide();
                 event.preventDefault();
             } else if (event.key === 'ArrowLeft') {
-                previousSlide(); // Flecha izquierda retrocede a la lámina anterior
+                previousSlide();
             }
+        });
+
+        // Inicializar la detección y carga automática al cargar la página
+        window.addEventListener('DOMContentLoaded', async () => {
+            await detectSlides();
         });
     </script>
 </body>
